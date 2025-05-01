@@ -1,0 +1,22 @@
+{
+    "name": "redmango/link-shortener",
+    "description": "A Telegram bot for shortening links with 48-hour expiration",
+    "type": "project",
+    "require": {
+        "php": ">=7.4",
+        "telegram-bot/api": "^2.3",
+        "vlucas/phpdotenv": "^5.3",
+        "monolog/monolog": "^2.3",
+        "guzzlehttp/guzzle": "^7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "RedMango\\": "src/"
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "chmod -R 755 public/"
+        ]
+    }
+}

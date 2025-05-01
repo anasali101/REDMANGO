@@ -1,0 +1,38 @@
+{
+  "bot_settings": {
+    "name": "RedMango",
+    "description": "URL shortener bot with 48-hour expiration",
+    "welcome_message": "Welcome to RedMango URL Shortener! I can create short links that expire after 48 hours.",
+    "admin_users": [12345678],
+    "version": "1.0.0"
+  },
+  "ui_settings": {
+    "theme": {
+      "primary_color": "#e74c3c",
+      "secondary_color": "#f39c12",
+      "background_color": "#f5f5f5",
+      "text_color": "#333333",
+      "logo_path": "/public/img/logo.png"
+    },
+    "animations": {
+      "enable_animations": true,
+      "animation_speed": "normal",
+      "effects": ["fade", "bounce", "pulse"]
+    }
+  },
+  "link_settings": {
+    "default_expiry_hours": 48,
+    "min_custom_length": 3,
+    "max_custom_length": 20,
+    "allowed_characters": "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-",
+    "random_code_length": 6,
+    "max_links_per_user": 50
+  },
+  "statistics": {
+    "total_links_created": 0,
+    "active_links": 0,
+    "total_redirects": 0,
+    "users_count": 0,
+    "last_reset": "2025-05-01T00:00:00Z"
+  }
+}

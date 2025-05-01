@@ -1,0 +1,52 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    container_name: redmango-web
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - db
+    volumes:
+      - .:/var/www/html
+      - ./logs:/var/log/apache2
+    restart: always
+    networks:
+      - redmango_network
+
+  db:
+    image: mysql:8.0
+    container_name: redmango-db
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - redmango_network
+    restart: always
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: redmango-phpmyadmin
+    depends_on:
+      - db
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    networks:
+      - redmango_network
+
+networks:
+  redmango_network:
+    driver: bridge
+
+volumes:
+  db_data:
