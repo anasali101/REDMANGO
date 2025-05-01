@@ -36,7 +36,7 @@ RUN mkdir -p /etc/apache2/ssl \
     -out /etc/apache2/ssl/server.crt \
     -subj "/C=US/ST=State/L=City/O=Organization/CN=localhost"
 
-# Configure Apache for SSL
+# Configure Apache
 COPY docker/apache-config.conf /etc/apache2/sites-available/000-default.conf
 RUN a2ensite 000-default
 
